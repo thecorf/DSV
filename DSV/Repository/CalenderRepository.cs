@@ -4,12 +4,13 @@ namespace DSV.Repository
     public class CalenderRepository : ICalenderRepository
     {
         List<Room> _room = new();
+        List<Booking> _bookings = new();
 
         public void AddRoom(Room room)
         {
             _room.Add(room);
         }
-        List<Booking> _bookings = new();
+
         public CalenderRepository()
         {
             AddRoom(new Room("rum1", true, true, false, 2, _bookings));
