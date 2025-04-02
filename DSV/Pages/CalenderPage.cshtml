@@ -2,9 +2,14 @@
 @model DSV.Pages.CalenderPageModel
 @{
 }
-@for (int i=0; i<54; i++)
+@for (int i=0; i<8; i++)
 {
 	<div width="16%">
-		@CalenderPageModel.rooms[0].RoomName
+		@CalenderPageModel.Time[i]
 	</div>
+		@CalenderPageModel.Monday[i]
+		@CalenderPageModel.Tuesday[i]
+		@CalenderPageModel.Wednesday[i]
+		@CalenderPageModel.Thursday[i]
+		@CalenderPageModel.Friday[i]
 }
