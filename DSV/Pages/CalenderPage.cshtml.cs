@@ -12,10 +12,13 @@ namespace DSV.Pages
         [BindProperty]
         public List<Array> calenders
         {  get; set; }
+        public static List<Room> rooms 
+        { get; set; }
         public CalenderPageModel(CalenderService serviceCalender) 
         { 
-            calenders = new List<Array>();
+            calenders = serviceCalender.GetCalender();
             _service = serviceCalender;
+            rooms = serviceCalender.GetAll();
         }
         public void OnGet()
         {
