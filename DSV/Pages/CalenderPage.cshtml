@@ -2,14 +2,86 @@
 @model DSV.Pages.CalenderPageModel
 @{
 }
-@for (int i=0; i<8; i++)
+@for (int j = 0; j < CalenderPageModel.rooms.Count; j++)
 {
-	<div width="16%">
-		@CalenderPageModel.Time[i]
-	</div>
-		@CalenderPageModel.Monday[i]
-		@CalenderPageModel.Tuesday[i]
-		@CalenderPageModel.Wednesday[i]
-		@CalenderPageModel.Thursday[i]
-		@CalenderPageModel.Friday[i]
+    <h1>@CalenderPageModel.rooms[j].RoomName</h1>
+    <div class="container">
+
+        <div class="table-responsive">
+            <table class="table table-bordered text-center">
+                <thead>
+                    <tr class="bg-light-gray">
+                        <th class="text-uppercase">
+                            Time
+                        </th>
+                        <th class="text-uppercase">Monday</th>
+                        <th class="text-uppercase">Tuesday</th>
+                        <th class="text-uppercase">Wednesday</th>
+                        <th class="text-uppercase">Thursday</th>
+                        <th class="text-uppercase">Friday</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="align-middle">09:00am</td>
+                        @for (int i = 0; i < 25; i += 5)
+                        {
+                        <td onclick="">
+                            <span>@CalenderPageModel.rooms[j].Bookings[i].Title</span>
+                            <div class="margin-10px-top font-size14">@CalenderPageModel.rooms[j].Bookings[i].Description</div>
+                            <div class="font-size13 text-light-gray"></div>
+                        </td>
+                        }
+                        <tr>
+
+                        <td class="align-middle">10:00am</td>
+
+                        @for (int i = 1; i < 25; i += 5)
+                        {
+                        <td>
+                            <span>@CalenderPageModel.rooms[j].Bookings[i].Title</span>
+                            <div class="margin-10px-top font-size14">@CalenderPageModel.rooms[j].Bookings[i].Description</div>
+                            <div class="font-size13 text-light-gray"></div>
+                        </td>
+                        }
+                </tr>
+                <tr>
+                    <td class="align-middle">11:00am</td>
+
+                        @for (int i = 2; i < 25; i += 5)
+                        {
+                        <td>
+                            <span>@CalenderPageModel.rooms[j].Bookings[i].Title</span>
+                            <div class="margin-10px-top font-size14">@CalenderPageModel.rooms[j].Bookings[i].Description</div>
+                            <div class="font-size13 text-light-gray"></div>
+                        </td>
+                        }
+                </tr>
+                <tr>
+                    <td class="align-middle">12:00pm</td>
+
+                        @for (int i = 3; i < 25; i += 5)
+                        {
+                        <td>
+                            <span>@CalenderPageModel.rooms[j].Bookings[i].Title</span>
+                            <div class="margin-10px-top font-size14">@CalenderPageModel.rooms[j].Bookings[i].Description</div>
+                            <div class="font-size13 text-light-gray"></div>
+                        </td>
+                        }
+                </tr>
+                <tr>
+                    <td class="align-middle">01:00pm</td>
+
+                        @for (int i = 4; i < 25; i += 5)
+                        {
+                        <td>
+                            <span>@CalenderPageModel.rooms[j].Bookings[i].Title</span>
+                            <div class="margin-10px-top font-size14">@CalenderPageModel.rooms[j].Bookings[i].Description</div>
+                            <div class="font-size13 text-light-gray"></div>
+                        </td>
+                        }         
+                </tbody>
+            </table>
+        </div>
+    </div>
 }

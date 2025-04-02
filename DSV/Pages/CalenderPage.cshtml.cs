@@ -10,22 +10,11 @@ namespace DSV.Pages
     {
         private CalenderService _service;
         [BindProperty]
-        public static string[] Monday { get; set; }
-        public static string[] Tuesday { get; set; }
-        public static string[] Wednesday { get; set; }
-        public static string[] Thursday { get; set; }
-        public static string[] Friday { get; set; }
-        public static string[] Time { get; set; }
         public static List<Room> rooms 
         { get; set; }
         public CalenderPageModel(CalenderService serviceCalender) 
         {
-            Monday = serviceCalender.GetMon();
-            Tuesday = serviceCalender.GetTue();
-            Wednesday = serviceCalender.GetWed();
-            Thursday = serviceCalender.GetThur();
-            Friday = serviceCalender.GetFri();
-            Time = serviceCalender.GetTime();
+            
             _service = serviceCalender;
             rooms = serviceCalender.GetAll();
         }

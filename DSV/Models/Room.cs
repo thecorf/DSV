@@ -8,8 +8,8 @@
         //To see whether the CEO is present
         public bool Clown { get; set; }
         public int Capacity { get; set; }
-        public List<Booking> Bookings {get; set;}
-        public Room(string room, bool whiteboard, bool projector, bool clown, int capacity, List<Booking> bookings)
+        public Booking[] Bookings {get; set;}
+        public Room(string room, bool whiteboard, bool projector, bool clown, int capacity, Booking[] bookings)
         {
             RoomName = room;
             Whiteboard = whiteboard;
