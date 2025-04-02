@@ -7,4 +7,23 @@
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+	<a href="#" class="btn" onclick="document.getElementById('test-modal').style.display='block'">LÆS MERE</a>
+
+
+    @* <button onclick="document.getElementById('test-modal').style.display='block'">Open Modal</button> *@
+
+
+    @for (int i = 0; i < 2; i++)
+    {
+    <div id="test-modal" class="modal">
+        <div class="modal-content">
+            <div class="">
+                <span onclick="document.getElementById('test-modal').style.display='none'" class="btn-close display-topright"></span>
+                @* <h2>@CalenderPageModel.Rooms[i].RoomName</h2> *@
+                <h2>fishe</h2>
+                @* <p>@CalenderPageModel.Rooms[i].Capacity</p> *@
+            </div>
+        </div>
+    </div>
+    }
 </div>

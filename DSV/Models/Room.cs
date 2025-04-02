@@ -9,14 +9,19 @@
         public bool Clown { get; set; }
         public int Capacity { get; set; }
         public Booking[] Bookings {get; set;}
-        public Room(string room, bool whiteboard, bool projector, bool clown, int capacity, Booking[] bookings)
+
+        public Room(string room, bool whiteboard, bool projector, bool clown, int capacity)
         {
             RoomName = room;
             Whiteboard = whiteboard;
             Projector = projector;
             Clown = clown;
             Capacity = capacity;
-            Bookings = bookings;
+            Bookings = new Booking[25];
+            for (int i = 0; i < 25; i++)
+            {
+                Bookings[i] = new(0, " ", " ", " ", 0);
+            }
         }
 
     }
