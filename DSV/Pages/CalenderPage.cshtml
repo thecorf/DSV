@@ -30,7 +30,7 @@
                         {
                             @if (CalenderPageModel.Rooms[j].Bookings[i].Title != " ")
                             {
-                                <td onclick="document.getElementById('@j+@i').style.display='block'" class="red">
+                                    <td class="red" onclick="document.getElementById('@j+@i').style.display='block'">
                                     <span>@CalenderPageModel.Rooms[j].Bookings[i].Title</span>
                                     <div class="margin-10px-top font-size14">@CalenderPageModel.Rooms[j].Bookings[i].Description</div>
                                     <div class="font-size13 text-light-gray"></div>
