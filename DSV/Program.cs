@@ -1,3 +1,6 @@
+using DSV.Repository;
+using DSV.Service;
+
 namespace DSV
 {
     public class Program
@@ -6,6 +9,8 @@ namespace DSV
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            builder.Services.AddSingleton<ICalenderRepository, CalenderRepository>();
+            builder.Services.AddSingleton<CalenderService>();
             // Add services to the container.
             builder.Services.AddRazorPages();
 

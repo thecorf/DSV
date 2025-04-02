@@ -1,4 +1,5 @@
-﻿using DSV.Models;
+﻿using System.Globalization;
+using DSV.Models;
 using DSV.Repository;
 namespace DSV.Service
 {
@@ -15,6 +16,10 @@ namespace DSV.Service
         {
             _calenderRepository.AddRoom(room);
         }
+        public List<Room> GetAll()
+        { return _calenderRepository.GetAll(); }
 
+        public List<Array> GetCalender()
+        { return _calenderRepository.GetCalender(); }
     }
 }
