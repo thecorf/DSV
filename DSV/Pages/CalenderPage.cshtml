@@ -2,6 +2,83 @@
 @model DSV.Pages.CalenderPageModel
 @{
 }
+<form method="post" asp-page-handler="Filter">
+    <input type="checkbox"  name="projector" value="true" />
+    <input type="submit" value="submit"/>
+</form>
+
+@if (CalenderPageModel.projector == true) { }
+@for (int j = 0; j < CalenderPageModel.FilteredRooms.Count; j++)
+{
+    <h1>@CalenderPageModel.FilteredRooms[j].RoomName</h1>
+    <div class="container">
+
+        <div class="table-responsive">
+            <table class="table table-bordered text-center">
+                <thead>
+                    <tr class="bg-light-gray">
+                        <th class="text-uppercase">
+                            Time
+                        </th>
+                        <th class="text-uppercase">Monday</th>
+                        <th class="text-uppercase">Tuesday</th>
+                        <th class="text-uppercase">Wednesday</th>
+                        <th class="text-uppercase">Thursday</th>
+                        <th class="text-uppercase">Friday</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int l = 0; l < 5; l++)
+                    {
+                        <tr>
+                            <td class="align-middle">@CalenderPageModel.Time[l]</td>
+                            @for (int i = 0 + l; i < 25; i += 5)
+                            {
+                                @if (CalenderPageModel.FilteredRooms[j].Bookings[i].Title != " " && CalenderPageModel.FilteredRooms[j].Bookings[i].Title != null)
+                                {
+                                    <td class="red" onclick="document.getElementById('@j+@i').style.display='block'">
+                                        <span>@CalenderPageModel.FilteredRooms[j].Bookings[i].Title</span>
+                                        <div class="margin-10px-top font-size14">@CalenderPageModel.FilteredRooms[j].Bookings[i].Description</div>
+                                        <div class="font-size13 text-light-gray"></div>
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td onclick="document.getElementById('@j+@i').style.display='block'">
+
+                                        <span>@CalenderPageModel.FilteredRooms[j].Bookings[i].Title</span>
+                                        <div class="margin-10px-top font-size14">@CalenderPageModel.FilteredRooms[j].Bookings[i].Description</div>
+                                        <div class="font-size13 text-light-gray"></div>
+                                    </td>
+                                }
+                                <div id="@j+@i" class="modal">
+                                    <div class="modal-content">
+                                        <div class="">
+                                            <span onclick="document.getElementById('@j+@i').style.display='none'" class="btn-close display-topright"></span>
+                                            <h2>@CalenderPageModel.FilteredRooms[j].RoomName</h2>
+                                            <p>@CalenderPageModel.FilteredRooms[j].Bookings[i].Title</p>
+                                            <p>@CalenderPageModel.FilteredRooms[j].Bookings[i].Description</p>
+                                            @CalenderPageModel.FilteredRooms[j].Bookings[i].Title
+                                            <form method="post">
+                                                <input type="text" name="Title" asp-for="Booking.Title" placeholder="Navn" />
+
+                                                <input type="hidden" name="i" value="@i" />
+                                                <input type="hidden" name="j" value="@j" />
+                                                @* <input type="hidden" name="i" value="@i" /> *@
+                                                <input type="submit" value="submit" />
+                                            </form>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
 @for (int j = 0; j < CalenderPageModel.Rooms.Count; j++)
 {
     <h1>@CalenderPageModel.Rooms[j].RoomName</h1>

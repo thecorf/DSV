@@ -17,9 +17,17 @@ namespace DSV.Service
         {
             _calenderRepository.AddRoom(room);
         }
+        public void AddFilteredRoom(Room room)
+        {
+            _calenderRepository.AddFilteredRoom(room);
+        }
         public List<Room> GetAll()
         { 
             return _calenderRepository.GetAll(); 
+        }
+        public List<Room> GetAllFilteredRooms()
+        {
+            return _calenderRepository.GetAllFilteredRooms();
         }
 
         public void Edit(int j, int i, Booking booking)
