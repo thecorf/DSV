@@ -1,9 +1,9 @@
+using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using DSV.Models;
 using DSV.Service;
 using DSV.Repository;
-using System.Diagnostics;
 
 namespace DSV.Pages
 {
@@ -13,10 +13,11 @@ namespace DSV.Pages
         public static string[] Time = ["09:00 am","10:00 am", "11:00 am", "12:00 pm", "01:00 pm"];
         [BindProperty]
         public static List<Room> Rooms { get; set; }
-        public Booking Booking { get; set; }
-        public int j { get; set; }
-        public int i { get; set; }
 
+        [BindProperty]
+        public Booking Booking { get; set; }
+
+       
         public CalenderPageModel(CalenderService serviceCalender) 
         {
             Booking = new Booking();
@@ -29,9 +30,9 @@ namespace DSV.Pages
 
         }
 
-        public IActionResult OnPost()
+        public IActionResult OnPost(int i, int j)
         {
-
+            
             Debug.WriteLine("test " + Booking.Title);
             Debug.WriteLine("test " + j);
             Debug.WriteLine("test " + i);

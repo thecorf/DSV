@@ -23,11 +23,11 @@ namespace DSV.Repository
         public CalenderRepository()
         {
 
-            AddRoom(new Room("rum1", true, true, false, 2));
-            AddRoom(new Room("rum2", true, false, false, 10));
-            AddRoom(new Room("rum3", true, true, false, 13));
-            AddRoom(new Room("rum4", true, false, false, 25));
-            AddRoom(new Room("rum5", false, false, true, 99));
+            AddRoom(new Room("Rum 1", true, true, false, 2));
+            AddRoom(new Room("Rum 2", true, false, false, 10));
+            AddRoom(new Room("Rum 3", true, true, false, 13));
+            AddRoom(new Room("Rum 4", true, false, false, 25));
+            AddRoom(new Room("Rum 5", false, false, true, 99));
         }
 
     }

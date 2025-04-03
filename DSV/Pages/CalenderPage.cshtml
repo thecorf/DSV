@@ -28,7 +28,7 @@
                         <td class="align-middle">@CalenderPageModel.Time[l]</td>
                         @for (int i = 0+l; i < 25; i += 5)
                         {
-                                @if (CalenderPageModel.Rooms[j].Bookings[i].Title != " " && CalenderPageModel.Rooms[j].Bookings[i].Title  != "")
+                                @if (CalenderPageModel.Rooms[j].Bookings[i].Title != " " && CalenderPageModel.Rooms[j].Bookings[i].Title != null)
                             {
                                 <td class="red" onclick="document.getElementById('@j+@i').style.display='block'">
                                     <span>@CalenderPageModel.Rooms[j].Bookings[i].Title</span>
@@ -53,11 +53,13 @@
                                     <p>@CalenderPageModel.Rooms[j].Bookings[i].Title</p>
                                     <p>@CalenderPageModel.Rooms[j].Bookings[i].Description</p>
                                     @CalenderPageModel.Rooms[j].Bookings[i].Title
-                                    <form method="post">
+                                    <form method="post" >
                                                 <input type="text" name="Title" asp-for="Booking.Title" placeholder="Navn" />
-                                        @* <input type="number" name="j" asp-for="@j" /> *@
-                                        @* <input type="number" name="i" asp-for="@i" /> *@
-                                        <input type="submit" value="submit" />
+                                            
+                                                <input type="hidden" name="i" value="@i" />
+                                                <input type="hidden" name="j" value="@j" />
+                                                @* <input type="hidden" name="i" value="@i" /> *@
+                                                <input type="submit" value="submit" />
                                     </form>
 
                                 </div>
