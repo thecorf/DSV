@@ -18,8 +18,14 @@ namespace DSV.Service
             _calenderRepository.AddRoom(room);
         }
         public List<Room> GetAll()
-        { return _calenderRepository.GetAll(); }
+        { 
+            return _calenderRepository.GetAll(); 
+        }
 
+        public void Edit(int j, int i, Booking booking)
+        {
+            _calenderRepository.Edit(j, i, booking);
+        }
 
     }
 }

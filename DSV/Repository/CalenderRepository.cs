@@ -10,6 +10,13 @@ namespace DSV.Repository
         {
             _rooms.Add(room);
         }
+
+        public void Edit(int j, int i, Booking booking)
+        {
+            _rooms[j].Bookings[i] = booking;
+        }
+
+
         public List<Room> GetAll()
             { return _rooms; }
 

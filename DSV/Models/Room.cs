@@ -10,6 +10,8 @@
         public int Capacity { get; set; }
         public Booking[] Bookings {get; set;}
 
+
+
         public Room(string room, bool whiteboard, bool projector, bool clown, int capacity)
         {
             RoomName = room;
@@ -17,6 +19,8 @@
             Projector = projector;
             Clown = clown;
             Capacity = capacity;
+
+
             Bookings = new Booking[25];
             for (int i = 0; i < 25; i++)
             {

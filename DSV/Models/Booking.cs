@@ -8,6 +8,8 @@
         public string TimeInterval { get; set; }
         public int Day { get; set; }
         
+        public Booking() { }
+
         public Booking(int userID, string title, string description, string timeInterval, int day)
         {
             UserID = userID;

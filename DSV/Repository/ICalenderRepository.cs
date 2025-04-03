@@ -6,5 +6,7 @@ namespace DSV.Repository
     {
         public void AddRoom(Room room);
         public List<Room> GetAll();
+        public void Edit(int j, int i, Booking booking);
+
      }
 }
