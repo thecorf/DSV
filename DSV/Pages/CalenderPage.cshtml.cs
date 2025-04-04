@@ -12,10 +12,12 @@ namespace DSV.Pages
         private CalenderService _service;
         public static string[] Time = ["09:00 am","10:00 am", "11:00 am", "12:00 pm", "01:00 pm"];
         [BindProperty]
-        public bool projector { get; set; }   
+        public bool Projector { get; set; }   
         
         [BindProperty]
-        public bool Fprojector { get; set; }
+        public bool Whiteboard { get; set; }
+        [BindProperty]
+        public int Capacity { get; set; }
         [BindProperty]
         public List<Room> Rooms { get; set; }
         [BindProperty]
@@ -51,7 +53,8 @@ namespace DSV.Pages
         public IActionResult OnPostFilter()
         {
 
-            Debug.WriteLine("test " + projector);
+            Debug.WriteLine("test " + Projector);
+            _service.Filter(Whiteboard, Projector, Capacity);
             return null;
         }
 

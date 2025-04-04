@@ -9,5 +9,7 @@ namespace DSV.Repository
         public void Edit(int j, int i, Booking booking);
         public void AddFilteredRoom(Room room);
         public List<Room> GetAllFilteredRooms();
+
+        public void Filter(bool whiteboard, bool projector, int capacity);
      }
 }

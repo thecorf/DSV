@@ -3,11 +3,16 @@
 @{
 }
 <form method="post" asp-page-handler="Filter">
-    <input type="checkbox" asp-for="projector" name="projector" value="true" />
+    <input type="checkbox" asp-for="Whiteboard" name="Whiteboard" value="true" />
+    <input type="checkbox" asp-for="Projector" name="Projector" value="true" />
+    <input type="number" asp-for="Capacity" name="Capacity" value="0" />
     <input type="submit" value="submit"/>
 </form>
 
-@if (@Model.projector == true) { }
+@if (@Model.Projector == true || Model.Whiteboard || Model.Capacity > 0) 
+{
+
+
 @for (int j = 0; j < @Model.FilteredRooms.Count; j++)
 {
     <h1>@Model.FilteredRooms[j].RoomName</h1>
@@ -79,6 +84,8 @@
         </div>
     </div>
 }
+}
+else
 @for (int j = 0; j < Model.Rooms.Count; j++)
 {
     <h1>@Model.Rooms[j].RoomName</h1>

@@ -20,6 +20,71 @@ namespace DSV.Repository
             _rooms[j].Bookings[i] = booking;
         }
 
+        public void Filter(bool whiteboard, bool projector, int capacity)
+        {
+            
+            if (whiteboard && projector == false && capacity < 1)
+            {
+                foreach (Room room in _rooms)
+                {
+                    if (whiteboard == room.Whiteboard)
+                    {
+                        _filteredRooms.Add(room);
+                    }
+                }
+            }
+            else if (whiteboard && projector == true && capacity < 1)
+            {
+                foreach (Room room in _rooms)
+                {
+                    if (whiteboard == room.Whiteboard && projector == room.Projector)
+                    {
+                        _filteredRooms.Add(room);
+                    }
+                }
+            }
+            else if (whiteboard && projector && capacity >= 1)
+            {
+                foreach (Room room in _rooms)
+                {
+                    if (whiteboard == room.Whiteboard && room.Projector == projector && capacity <= room.Capacity)
+                    {
+                        _filteredRooms.Add(room);
+                    }
+                }
+            } 
+            else if (!whiteboard && projector && capacity >= 1)
+            {
+                foreach (Room room in _rooms)
+                {
+                    if (room.Projector == projector && capacity <= room.Capacity)
+                    {
+                        _filteredRooms.Add(room);
+                    }
+                }
+            } 
+            else if (!whiteboard && !projector && capacity >= 1)
+            {
+                foreach (Room room in _rooms)
+                {
+                    if (capacity <= room.Capacity)
+                    {
+                        _filteredRooms.Add(room);
+                    }
+                }
+            }
+            else if (whiteboard && !projector && capacity >= 1)
+            {
+                foreach (Room room in _rooms)
+                {
+                    if (whiteboard == room.Whiteboard && capacity <= room.Capacity)
+                    {
+                        _filteredRooms.Add(room);
+                    }
+                }
+            }
+            
+        }
 
         public List<Room> GetAll()
         {

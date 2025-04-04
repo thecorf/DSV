@@ -35,5 +35,9 @@ namespace DSV.Service
             _calenderRepository.Edit(j, i, booking);
         }
 
+        public void Filter(bool whiteboard, bool projector, int capacity)
+        {
+            _calenderRepository.Filter(whiteboard, projector, capacity);
+        }
     }
 }
