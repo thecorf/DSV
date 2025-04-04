@@ -2,14 +2,20 @@
 @model DSV.Pages.CalenderPageModel
 @{
 }
+@Model.Whiteboard
+@Model.Projector
+@Model.Capacity
+
 <form method="post" asp-page-handler="Filter">
     <input type="checkbox" asp-for="Whiteboard" name="Whiteboard" value="true" />
+    <label>Whiteboard</label>
     <input type="checkbox" asp-for="Projector" name="Projector" value="true" />
-    <input type="number" asp-for="Capacity" name="Capacity" value="0" />
+    <label>Projector</label>
+    <input type="number" asp-for="Capacity" name="Capacity" value="0"/>
     <input type="submit" value="submit"/>
 </form>
 
-@if (@Model.Projector == true || Model.Whiteboard || Model.Capacity > 0) 
+@if (Model.Projector || Model.Whiteboard || Model.Capacity > 0) 
 {
 
 
@@ -85,9 +91,11 @@
     </div>
 }
 }
-else
+else if (!Model.Projector || !Model.Whiteboard || Model.Capacity <= 0)
+{
 @for (int j = 0; j < Model.Rooms.Count; j++)
 {
+    <h2>fish</h2>
     <h1>@Model.Rooms[j].RoomName</h1>
     <div class="container">
 
@@ -156,4 +164,5 @@ else
             </table>
         </div>
     </div>
+}
 }

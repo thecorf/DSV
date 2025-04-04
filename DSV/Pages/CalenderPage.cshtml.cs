@@ -12,12 +12,12 @@ namespace DSV.Pages
         private CalenderService _service;
         public static string[] Time = ["09:00 am","10:00 am", "11:00 am", "12:00 pm", "01:00 pm"];
         [BindProperty]
-        public bool Projector { get; set; }   
-        
+        public bool Projector { get; set; } = false;
+
         [BindProperty]
-        public bool Whiteboard { get; set; }
+        public bool Whiteboard { get; set; } = false;
         [BindProperty]
-        public int Capacity { get; set; }
+        public int Capacity { get; set; } = 0;
         [BindProperty]
         public List<Room> Rooms { get; set; }
         [BindProperty]
@@ -31,8 +31,8 @@ namespace DSV.Pages
             Booking = new Booking();
             _service = serviceCalender;
             Rooms = serviceCalender.GetAll();
-            FilteredRooms = serviceCalender.GetAll();
-
+            FilteredRooms = serviceCalender.GetAllFilteredRooms();
+           
         }
         public void OnGet()
         {
@@ -50,12 +50,16 @@ namespace DSV.Pages
             return RedirectToPage("/CalenderPage");
 
         }
-        public IActionResult OnPostFilter()
+        public void OnPostFilter()
         {
 
             Debug.WriteLine("test " + Projector);
             _service.Filter(Whiteboard, Projector, Capacity);
-            return null;
+            FilteredRooms = _service.GetAllFilteredRooms();
+            
+
+
+            //return null;
         }
 
 

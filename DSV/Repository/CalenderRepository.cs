@@ -22,6 +22,7 @@ namespace DSV.Repository
 
         public void Filter(bool whiteboard, bool projector, int capacity)
         {
+            _filteredRooms.Clear();
             
             if (whiteboard && projector == false && capacity < 1)
             {
@@ -29,7 +30,7 @@ namespace DSV.Repository
                 {
                     if (whiteboard == room.Whiteboard)
                     {
-                        _filteredRooms.Add(room);
+                        AddFilteredRoom(room);
                     }
                 }
             }
@@ -39,7 +40,7 @@ namespace DSV.Repository
                 {
                     if (whiteboard == room.Whiteboard && projector == room.Projector)
                     {
-                        _filteredRooms.Add(room);
+                        AddFilteredRoom(room);
                     }
                 }
             }
@@ -49,7 +50,7 @@ namespace DSV.Repository
                 {
                     if (whiteboard == room.Whiteboard && room.Projector == projector && capacity <= room.Capacity)
                     {
-                        _filteredRooms.Add(room);
+                        AddFilteredRoom(room);
                     }
                 }
             } 
@@ -59,7 +60,7 @@ namespace DSV.Repository
                 {
                     if (room.Projector == projector && capacity <= room.Capacity)
                     {
-                        _filteredRooms.Add(room);
+                        AddFilteredRoom(room);
                     }
                 }
             } 
@@ -69,7 +70,7 @@ namespace DSV.Repository
                 {
                     if (capacity <= room.Capacity)
                     {
-                        _filteredRooms.Add(room);
+                        AddFilteredRoom(room);
                     }
                 }
             }
@@ -79,7 +80,17 @@ namespace DSV.Repository
                 {
                     if (whiteboard == room.Whiteboard && capacity <= room.Capacity)
                     {
-                        _filteredRooms.Add(room);
+                        AddFilteredRoom(room);
+                    }
+                }
+            }
+            else if (!whiteboard && projector && capacity < 1)
+            {
+                foreach (Room room in _rooms)
+                {
+                    if (projector == room.Projector)
+                    {
+                        AddFilteredRoom(room);
                     }
                 }
             }
