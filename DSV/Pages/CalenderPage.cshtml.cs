@@ -15,11 +15,11 @@ namespace DSV.Pages
         public bool projector { get; set; }   
         
         [BindProperty]
-        public static bool Fprojector { get; set; }
+        public bool Fprojector { get; set; }
         [BindProperty]
-        public static List<Room> Rooms { get; set; }
+        public List<Room> Rooms { get; set; }
         [BindProperty]
-        public static List <Room> FilteredRooms { get; set; }
+        public List <Room> FilteredRooms { get; set; }
         [BindProperty]
         public Booking Booking { get; set; }
 
@@ -51,7 +51,6 @@ namespace DSV.Pages
         public IActionResult OnPostFilter()
         {
 
-            Fprojector = projector;
             Debug.WriteLine("test " + projector);
             return null;
         }

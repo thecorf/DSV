@@ -7,10 +7,10 @@
     <input type="submit" value="submit"/>
 </form>
 
-@if (CalenderPageModel.Fprojector == true) { }
-@for (int j = 0; j < CalenderPageModel.FilteredRooms.Count; j++)
+@if (@Model.projector == true) { }
+@for (int j = 0; j < @Model.FilteredRooms.Count; j++)
 {
-    <h1>@CalenderPageModel.FilteredRooms[j].RoomName</h1>
+    <h1>@Model.FilteredRooms[j].RoomName</h1>
     <div class="container">
 
         <div class="table-responsive">
@@ -34,11 +34,11 @@
                             <td class="align-middle">@CalenderPageModel.Time[l]</td>
                             @for (int i = 0 + l; i < 25; i += 5)
                             {
-                                @if (CalenderPageModel.FilteredRooms[j].Bookings[i].Title != " " && CalenderPageModel.FilteredRooms[j].Bookings[i].Title != null)
+                                @if (Model.FilteredRooms[j].Bookings[i].Title != " " && Model.FilteredRooms[j].Bookings[i].Title != null)
                                 {
                                     <td class="red" onclick="document.getElementById('@j+@i').style.display='block'">
-                                        <span>@CalenderPageModel.FilteredRooms[j].Bookings[i].Title</span>
-                                        <div class="margin-10px-top font-size14">@CalenderPageModel.FilteredRooms[j].Bookings[i].Description</div>
+                                        <span>@Model.FilteredRooms[j].Bookings[i].Title</span>
+                                        <div class="margin-10px-top font-size14">@Model.FilteredRooms[j].Bookings[i].Description</div>
                                         <div class="font-size13 text-light-gray"></div>
                                     </td>
                                 }
@@ -46,8 +46,8 @@
                                 {
                                     <td onclick="document.getElementById('@j+@i').style.display='block'">
 
-                                        <span>@CalenderPageModel.FilteredRooms[j].Bookings[i].Title</span>
-                                        <div class="margin-10px-top font-size14">@CalenderPageModel.FilteredRooms[j].Bookings[i].Description</div>
+                                        <span>@Model.FilteredRooms[j].Bookings[i].Title</span>
+                                        <div class="margin-10px-top font-size14">@Model.FilteredRooms[j].Bookings[i].Description</div>
                                         <div class="font-size13 text-light-gray"></div>
                                     </td>
                                 }
@@ -55,10 +55,10 @@
                                     <div class="modal-content">
                                         <div class="">
                                             <span onclick="document.getElementById('@j+@i').style.display='none'" class="btn-close display-topright"></span>
-                                            <h2>@CalenderPageModel.FilteredRooms[j].RoomName</h2>
-                                            <p>@CalenderPageModel.FilteredRooms[j].Bookings[i].Title</p>
-                                            <p>@CalenderPageModel.FilteredRooms[j].Bookings[i].Description</p>
-                                            @CalenderPageModel.FilteredRooms[j].Bookings[i].Title
+                                            <h2>@Model.FilteredRooms[j].RoomName</h2>
+                                            <p>@Model.FilteredRooms[j].Bookings[i].Title</p>
+                                            <p>@Model.FilteredRooms[j].Bookings[i].Description</p>
+                                            @Model.FilteredRooms[j].Bookings[i].Title
                                             <form method="post">
                                                 <input type="text" name="Title" asp-for="Booking.Title" placeholder="Navn" />
 
@@ -79,9 +79,9 @@
         </div>
     </div>
 }
-@for (int j = 0; j < CalenderPageModel.Rooms.Count; j++)
+@for (int j = 0; j < Model.Rooms.Count; j++)
 {
-    <h1>@CalenderPageModel.Rooms[j].RoomName</h1>
+    <h1>@Model.Rooms[j].RoomName</h1>
     <div class="container">
 
         <div class="table-responsive">
@@ -105,11 +105,11 @@
                         <td class="align-middle">@CalenderPageModel.Time[l]</td>
                         @for (int i = 0+l; i < 25; i += 5)
                         {
-                                @if (CalenderPageModel.Rooms[j].Bookings[i].Title != " " && CalenderPageModel.Rooms[j].Bookings[i].Title != null)
+                                @if (Model.Rooms[j].Bookings[i].Title != " " && Model.Rooms[j].Bookings[i].Title != null)
                             {
                                 <td class="red" onclick="document.getElementById('@j+@i').style.display='block'">
-                                    <span>@CalenderPageModel.Rooms[j].Bookings[i].Title</span>
-                                    <div class="margin-10px-top font-size14">@CalenderPageModel.Rooms[j].Bookings[i].Description</div>
+                                    <span>@Model.Rooms[j].Bookings[i].Title</span>
+                                    <div class="margin-10px-top font-size14">@Model.Rooms[j].Bookings[i].Description</div>
                                     <div class="font-size13 text-light-gray"></div>
                                 </td>
                             }
@@ -117,8 +117,8 @@
                             {
                                 <td onclick="document.getElementById('@j+@i').style.display='block'">
 
-                                    <span>@CalenderPageModel.Rooms[j].Bookings[i].Title</span>
-                                    <div class="margin-10px-top font-size14">@CalenderPageModel.Rooms[j].Bookings[i].Description</div>
+                                    <span>@Model.Rooms[j].Bookings[i].Title</span>
+                                    <div class="margin-10px-top font-size14">@Model.Rooms[j].Bookings[i].Description</div>
                                     <div class="font-size13 text-light-gray"></div>
                                 </td>
                             }
@@ -126,10 +126,10 @@
                             <div class="modal-content">
                                 <div class="">
                                     <span onclick="document.getElementById('@j+@i').style.display='none'" class="btn-close display-topright"></span>
-                                    <h2>@CalenderPageModel.Rooms[j].RoomName</h2>
-                                    <p>@CalenderPageModel.Rooms[j].Bookings[i].Title</p>
-                                    <p>@CalenderPageModel.Rooms[j].Bookings[i].Description</p>
-                                    @CalenderPageModel.Rooms[j].Bookings[i].Title
+                                    <h2>@Model.Rooms[j].RoomName</h2>
+                                    <p>@Model.Rooms[j].Bookings[i].Title</p>
+                                    <p>@Model.Rooms[j].Bookings[i].Description</p>
+                                    @Model.Rooms[j].Bookings[i].Title
                                     <form method="post" >
                                                 <input type="text" name="Title" asp-for="Booking.Title" placeholder="Navn" />
                                             
