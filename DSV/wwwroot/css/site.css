@@ -62,3 +62,7 @@ body {
     background-color: red !important;
     color: white;
 }
+
+td{
+    width: 16%;
+}

@@ -3,11 +3,11 @@
 @{
 }
 <form method="post" asp-page-handler="Filter">
-    <input type="checkbox"  name="projector" value="true" />
+    <input type="checkbox" asp-for="projector" name="projector" value="true" />
     <input type="submit" value="submit"/>
 </form>
 
-@if (CalenderPageModel.projector == true) { }
+@if (CalenderPageModel.Fprojector == true) { }
 @for (int j = 0; j < CalenderPageModel.FilteredRooms.Count; j++)
 {
     <h1>@CalenderPageModel.FilteredRooms[j].RoomName</h1>
