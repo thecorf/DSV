@@ -39,15 +39,8 @@ namespace DSV.Pages
 
         }
 
-        public IActionResult OnPost(int i, int j)
-        {
-            
-            Debug.WriteLine("test " + Booking.Title);
-            Debug.WriteLine("test " + j);
-            Debug.WriteLine("test " + i);
-
-            _service.Edit(j, i, Booking);
-            return RedirectToPage("/CalenderPage");
+        public void OnPost()
+        { 
 
         }
         public void OnPostFilter()
@@ -56,10 +49,23 @@ namespace DSV.Pages
             Debug.WriteLine("test " + Projector);
             _service.Filter(Whiteboard, Projector, Capacity);
             FilteredRooms = _service.GetAllFilteredRooms();
-            
+            Rooms = _service.GetAll();
 
 
             //return null;
+        }
+
+        public void OnPostBooking(int j, int i)
+        {
+            Debug.WriteLine("test a " + Booking.Title);
+            Debug.WriteLine("test a " + j);
+            Debug.WriteLine("test a " + i);
+            Rooms = _service.GetAll();
+
+
+            _service.Edit(j, i, Booking);
+
+
         }
 
 
